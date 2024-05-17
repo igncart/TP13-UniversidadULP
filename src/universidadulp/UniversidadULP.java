@@ -3,15 +3,19 @@ package universidadulp;
 
 
 import java.sql.*;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import universidadulp.accesoADatos.AlumnoData;
+import universidadulp.accesoADatos.Conexion;
+import universidadulp.entidades.Alumno;
 
 
 public class UniversidadULP {
 
     
     public static void main(String[] args) {
-       //verificando git
-        try {
+       
+    /*    try {
            
             Class.forName("org.mariadb.jdbc.Driver");
             String bd = "jdbc:mysql://localhost:3306/tp13universidadulp";
@@ -25,7 +29,7 @@ public class UniversidadULP {
                
                 
              
-                /*   
+                /*  
                ---------------------------------Desinscribir a un alumno de una materia-----------------------------------------
                 
                 
@@ -43,7 +47,7 @@ public class UniversidadULP {
                 
                 
                 
-                /*    
+                    
                ---------------------------------Consulta alumnos con nota mayor a 8-----------------------------------------
                 
                 String sql = "SELECT a.*, i.nota "
@@ -70,7 +74,7 @@ public class UniversidadULP {
                 
                 
                 
-         /*
+         
             ------------------------------------Insertar inscripciones--------------------------------------------
                
                 String sql="INSERT INTO inscripcion(nota, idAlumno, idMateria) "
@@ -110,7 +114,7 @@ public class UniversidadULP {
             PreparedStatement ps = con.prepareStatement(sql);
             int registro = ps.executeUpdate();
             System.out.println(registro);
-         */
+         
      
         }  catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error");
@@ -119,5 +123,43 @@ public class UniversidadULP {
                 JOptionPane.showMessageDialog(null, "Error al cargar el driver");
     
         }
+    */
+    
+    //------------------------Unidad 5---------------------------
+    // -----------Comprueba la Conexion con la BD
+    //    Connection con= Conexion.getConexion();
+    
+      //--------------Agregar alumno a BD --------------
+        //Alumno alumno=new Alumno(4, 12345652, "Gomez", "Jorge Gabriel", LocalDate.of(2001, 5, 18), true);
+        //AlumnoData alu=new AlumnoData();
+        //alu.guardarAlumno(alumno);
+        //alu.modificarAlumno(alumno);
+        //alu.eliminarAlumno(4);    //No elimina, cambia el estado
+        
+        //--------------Buscar Alumno----------
+    /*    Alumno alumnoEncontrado=alu.buscarAlumno(5);        //para traer la informacion de la base de datos
+        if(alumnoEncontrado != null){       //este if es para la excepcion que la tira, por si el Estado es False y la cual este solo buscar los id con estado True
+            System.out.println("dni: "+alumnoEncontrado.getDni());
+            System.out.println("apellido: "+alumnoEncontrado.getApellido());
+        }
+    */
+        
+    /*    Alumno alumnoPorDni=alu.buscarAlumnoPorDni(32654852);   //para buscar por DNI
+        if(alumnoPorDni!=null){
+            System.out.println("dni: "+alumnoPorDni.getDni());
+            System.out.println("apellido: "+alumnoPorDni.getApellido());
+        }
+    */
+        //------------Lista de la Base de Datos-----------
+        AlumnoData alu=new AlumnoData();
+        for (Alumno alumno : alu.listarAlumnos()) {
+            
+            System.out.println(alumno.getDni());
+            System.out.println(alumno.getApellido());
+            System.out.println(alumno.getNombre());
+            System.out.println(alumno.getFechaNacimiento());
+        }
+    
     }
+    
 }
