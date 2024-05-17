@@ -10,7 +10,7 @@ public class UniversidadULP {
 
     
     public static void main(String[] args) {
-       
+       //verificando git
         try {
            
             Class.forName("org.mariadb.jdbc.Driver");
