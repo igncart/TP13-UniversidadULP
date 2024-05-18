@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2024 a las 01:01:22
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 18-05-2024 a las 02:02:30
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.0.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tp13universidadulp`
 --
-CREATE DATABASE IF NOT EXISTS `tp13universidadulp` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `tp13universidadulp`;
 
 -- --------------------------------------------------------
 
@@ -36,7 +35,7 @@ CREATE TABLE `alumno` (
   `nombre` varchar(20) NOT NULL,
   `fechaNacimiento` date NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `alumno`
@@ -45,7 +44,8 @@ CREATE TABLE `alumno` (
 INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES
 (1, 32589412, 'Nievas', 'Clara', '2000-05-11', 1),
 (2, 40689201, 'Molinari', 'Pedro', '1998-09-25', 1),
-(3, 25100214, 'Chipoli', 'Javier', '1995-03-11', 1);
+(3, 25100214, 'Chipoli', 'Javier', '1995-03-11', 1),
+(4, 12345652, 'Gomez', 'Jorge Gabriel', '2001-05-18', 0);
 
 -- --------------------------------------------------------
 
@@ -58,7 +58,7 @@ CREATE TABLE `inscripcion` (
   `nota` int(11) NOT NULL,
   `idAlumno` int(11) NOT NULL,
   `idMateria` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inscripcion`
@@ -82,7 +82,7 @@ CREATE TABLE `materia` (
   `nombre` varchar(20) NOT NULL,
   `año` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `materia`
@@ -127,7 +127,7 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
