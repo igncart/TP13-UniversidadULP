@@ -17,8 +17,9 @@ public class UniversidadULP {
        
    
     
-    //------------------------Unidad 5---------------------------
-    // -----------Comprueba la Conexion con la BD
+    //------------------------Unidad 5 | Entrega 1 ---------------------------
+    
+// -----------Comprueba la Conexion con la BD
     //    Connection con= Conexion.getConexion();
     
       //--------------Agregar alumno a BD --------------
