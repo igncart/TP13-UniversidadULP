@@ -4,22 +4,22 @@ package universidadulp.entidades;
 public class Materia {
     private int idMateria;
     private String nombre;
-    private int anioMateria;
+    private int anio;
     private boolean estado;
 
     public Materia() {
     }
 
-    public Materia(int idMateria, String nombre, int anioMateria, boolean estado) {
+    public Materia(int idMateria, String nombre, int anio, boolean estado) {
         this.idMateria = idMateria;
         this.nombre = nombre;
-        this.anioMateria = anioMateria;
+        this.anio = anio;
         this.estado = estado;
     }
 
-    public Materia(String nombre, int anioMateria, boolean estado) {
+    public Materia(String nombre, int anio, boolean estado) {
         this.nombre = nombre;
-        this.anioMateria = anioMateria;
+        this.anio = anio;
         this.estado = estado;
     }
 
@@ -39,12 +39,12 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public int getAnioMateria() {
-        return anioMateria;
+    public int getAnio() {
+        return anio;
     }
 
-    public void setAnioMateria(int anioMateria) {
-        this.anioMateria = anioMateria;
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
 
     public boolean isEstado() {
@@ -57,7 +57,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anioMateria=" + anioMateria + '}';
+        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + '}';
     }
     
     

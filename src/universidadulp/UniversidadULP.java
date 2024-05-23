@@ -6,9 +6,10 @@ import java.sql.*;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import universidadulp.accesoADatos.AlumnoData;
+import universidadulp.accesoADatos.MateriaData;
 import universidadulp.accesoADatos.Conexion;
 import universidadulp.entidades.Alumno;
-
+import universidadulp.entidades.Materia;
 
 public class UniversidadULP {
 
@@ -17,7 +18,63 @@ public class UniversidadULP {
        
    
     
-    //------------------------Unidad 5 | Entrega 1 ---------------------------
+    /*------------------------- Unidad 5 | Entega 2 ---------------------------------
+    
+    [[+ GUARDAR MATERIA +]]
+    
+        Materia materia = new Materia("Ingles", 2, true);
+    
+        MateriaData mat = new MateriaData();
+        
+        mat.guardarMateria(materia);
+
+   
+    
+    [[+ MODIFICAR y ELIMINAR MATERIA +]]
+    
+        Materia materia = new Materia(5, "Ingles II", 2, true);
+    
+        MateriaData mat = new MateriaData();
+    
+        mat.modificarMateria(materia);
+        
+        mat.eliminarMateria(5);
+    
+    
+     [[+ BUSCAR MATERIA +]]
+    
+          MateriaData mat = new MateriaData();
+  
+          Materia materiaEncontrada = mat.buscarMateria(4); 
+       
+           if (materiaEncontrada != null) {      
+                   System.out.println("Nombre: "+materiaEncontrada.getNombre());
+                   System.out.println("Año: "+materiaEncontrada.getAnio());
+           }
+    
+
+     [[+ LISTAR MATERIAS +]]
+      
+        MateriaData mat = new MateriaData();
+           
+       for (Materia materia : mat.listarMaterias()) {
+            
+                   System.out.println("-------------------------------------");
+                   System.out.println("Nombre: "+ materia.getNombre());
+                   System.out.println("Año: "+ materia.getAnio());
+        }
+
+*/
+
+
+
+
+
+
+
+
+
+//------------------------Unidad 5 | Entrega 1 ---------------------------
     
 // -----------Comprueba la Conexion con la BD
     //    Connection con= Conexion.getConexion();
@@ -42,7 +99,7 @@ public class UniversidadULP {
             System.out.println("dni: "+alumnoPorDni.getDni());
             System.out.println("apellido: "+alumnoPorDni.getApellido());
         }
-    */
+    
         //------------Lista de la Base de Datos-----------
         AlumnoData alu=new AlumnoData();
         for (Alumno alumno : alu.listarAlumnos()) {
@@ -52,7 +109,7 @@ public class UniversidadULP {
             System.out.println(alumno.getNombre());
             System.out.println(alumno.getFechaNacimiento());
         }
-    
+       */
     }
     
 }
