@@ -5,19 +5,61 @@ package universidadulp;
 import java.sql.*;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import universidadulp.accesoADatos.AlumnoData;
-import universidadulp.accesoADatos.MateriaData;
-import universidadulp.accesoADatos.Conexion;
-import universidadulp.entidades.Alumno;
-import universidadulp.entidades.Materia;
+import universidadulp.accesoADatos.*;
+import universidadulp.entidades.*;
 
 public class UniversidadULP {
 
     
     public static void main(String[] args) {
        
+   AlumnoData ad=new AlumnoData();
+   MateriaData md=new MateriaData();
+   InscripcionData id=new InscripcionData();
    
-    
+   
+  /* guardar inscripcion
+   
+   Alumno alu= ad.buscarAlumno(1);
+   Materia mate=md.buscarMateria(2);
+   Inscripcion insc= new Inscripcion (alu,mate,0);
+   
+  id.guardarInscripcion(insc);  */
+   
+   /*actualizar nota
+   
+   id.actualizarNota(1, 2, 1); 
+   
+   */
+   
+   /*borrado
+   
+   id.borrarInscripcionMateriaAlumno(1, 2); */
+   
+  /* Consulta de inscripciones
+   
+           for (Inscripcion inscripcion:id.obtenerInscripciones()){
+       
+       System.out.println("id "+inscripcion.getIdInscripcion());
+       System.out.println("Apellido "+inscripcion.getAlumno().getApellido());
+       System.out.println("Materia "+ inscripcion.getMateria().getNombre());
+       
+   } */
+           
+  /*Consulta de materias
+  for (Materia materia:id.obtenerMateriasNOCursadas(2))
+      
+      System.out.println("nombre "+materia.getNombre());
+  */
+  
+  /*for (Inscripcion inscripcion:id.obtenerInscripcionesPorAlumno(2))
+     
+      System.out.println("el alumno de id 2 tiene la inscripcion numero:  " +inscripcion.getIdInscripcion()); */
+  
+  /*for (Materia materia:id.obtenerMateriasCursadas(2))
+      
+      System.out.println("nombre "+materia.getNombre());*/
+ 
     /*------------------------- Unidad 5 | Entega 2 ---------------------------------
     
     [[+ GUARDAR MATERIA +]]
