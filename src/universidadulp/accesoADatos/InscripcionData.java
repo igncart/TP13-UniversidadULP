@@ -191,7 +191,8 @@ public List <Alumno> obtenerAlumnosXMateria (int idMateria) {
 
     ArrayList <Alumno> alumnosMateria = new ArrayList<>();
 
-    String sql = "SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado " + "FROM inscripcion i, alumno a WHERE  i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1";
+    String sql = "SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado " 
+            + "FROM inscripcion i, alumno a WHERE  i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1";
 
     try {
         PreparedStatement ps=con.prepareCall(sql);
@@ -211,7 +212,7 @@ public List <Alumno> obtenerAlumnosXMateria (int idMateria) {
         ps.close();
 
     }catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de inscripcion");
+        JOptionPane.showMessageDialog(null, "Error, sos alto bobo");
         }
 
         return alumnosMateria;

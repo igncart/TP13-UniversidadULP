@@ -17,8 +17,9 @@ public class UniversidadULP {
    MateriaData md=new MateriaData();
    InscripcionData id=new InscripcionData();
    
-   
-  /* guardar inscripcion
+   /*------------------------- Unidad 5 | Entega 2 ---------------------------------
+    
+  /* (((Guardar Inscripcion)))
    
    Alumno alu= ad.buscarAlumno(1);
    Materia mate=md.buscarMateria(2);
@@ -26,17 +27,23 @@ public class UniversidadULP {
    
   id.guardarInscripcion(insc);  */
    
-   /*actualizar nota
+  
+  
+   /* (((Actualizar Nota)))
    
    id.actualizarNota(1, 2, 1); 
    
    */
    
-   /*borrado
+   
+   
+   /*(((Borrar Inscripcion)))
    
    id.borrarInscripcionMateriaAlumno(1, 2); */
    
-  /* Consulta de inscripciones
+   
+   
+  /* (((Listar Inscripciones)))
    
            for (Inscripcion inscripcion:id.obtenerInscripciones()){
        
@@ -45,24 +52,39 @@ public class UniversidadULP {
        System.out.println("Materia "+ inscripcion.getMateria().getNombre());
        
    } */
-           
-  /*Consulta de materias
+ 
+  
+  
+   /*(((Listar Materias NO Cursadas)))
+  
   for (Materia materia:id.obtenerMateriasNOCursadas(2))
       
       System.out.println("nombre "+materia.getNombre());
   */
   
-  /*for (Inscripcion inscripcion:id.obtenerInscripcionesPorAlumno(2))
-     
-      System.out.println("el alumno de id 2 tiene la inscripcion numero:  " +inscripcion.getIdInscripcion()); */
   
-  /*for (Materia materia:id.obtenerMateriasCursadas(2))
+   /* (((Listar Materias Cursadas)))
+  
+  for (Materia materia:id.obtenerMateriasCursadas(2))
       
       System.out.println("nombre "+materia.getNombre());*/
- 
-    /*------------------------- Unidad 5 | Entega 2 ---------------------------------
+   
+   
+  
+  /*for (Inscripcion inscripcion : id.obtenerInscripcionesPorAlumno(2)) {
+    System.out.println("el alumno " + inscripcion.getAlumno() + " tiene la inscripcion numero: " + inscripcion.getIdInscripcion());
+    System.out.println("Con la materia: " + inscripcion.getMateria().getNombre());
+    System.out.println("Con la nota: "+ inscripcion.getNota()); } */
+  
+ /*
+  for (Alumno alumno : id.obtenerAlumnosXMateria(2)) {
+    System.out.println("ID del alumno: " + alumno.getIdAlumno());
+    System.out.println("Nombre del alumno: " + alumno.getNombre());
+    System.out.println("Apellido del alumno: " + alumno.getApellido());
+    System.out.println("Fecha de nacimiento del alumno: " + alumno.getFechaNacimiento()); */
+  }
     
-    [[+ GUARDAR MATERIA +]]
+   /* [[+ GUARDAR MATERIA +]]
     
         Materia materia = new Materia("Ingles", 2, true);
     
@@ -107,15 +129,7 @@ public class UniversidadULP {
         }
 
 */
-
-
-
-
-
-
-
-
-
+    
 //------------------------Unidad 5 | Entrega 1 ---------------------------
     
 // -----------Comprueba la Conexion con la BD
@@ -154,7 +168,7 @@ public class UniversidadULP {
        */
     }
     
-}
+
 
 
 
