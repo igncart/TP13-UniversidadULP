@@ -1,22 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package universidadulp.vistas;
 
-/**
- *
- * @author IGNACIO
- */
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import universidadulp.accesoADatos.*;
+import universidadulp.entidades.*;
+ 
 public class CargarNotas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CargarNotas
-     */
+    private InscripcionData inscData;
+    private AlumnoData aluData;
+    private MateriaData matData;
+
+    private List<Alumno> listaAlu;
+    private List<Inscripcion> listaInsc;
+;
+    private DefaultTableModel modelo = new DefaultTableModel();
+
+
     public CargarNotas() {
         initComponents();
-    }
 
+        inscData = new InscripcionData();
+        aluData = new AlumnoData();
+        matData = new MateriaData();
+        cargarCombo();
+        armarCabeceraTabla();
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +52,11 @@ public class CargarNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Selecciona un alumno:");
 
-        jcbSelecAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbSelecAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbSelecAlumnoActionPerformed(evt);
+            }
+        });
 
         TablaNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,8 +72,18 @@ public class CargarNotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(TablaNotas);
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +132,74 @@ public class CargarNotas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbSelecAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSelecAlumnoActionPerformed
+Alumno alu = (Alumno)jcbSelecAlumno.getSelectedItem();
+        if(alu != null){
+            cargarTabla(alu.getIdAlumno());
+        }else{
+            JOptionPane.showMessageDialog(this, "Elija un alumno >:(");
+        }
+    }//GEN-LAST:event_jcbSelecAlumnoActionPerformed
 
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+   int idMat;
+        String nota1;
+        int nota2;
+
+        Alumno alu = (Alumno)jcbSelecAlumno.getSelectedItem();
+        try{
+                 idMat = (Integer)modelo.getValueAt(TablaNotas.getSelectedRow(), 0);
+                 nota1 = modelo.getValueAt(TablaNotas.getSelectedRow(), 2)+"";
+                 nota2 = Integer.parseInt(nota1);
+                 inscData.actualizarNota(alu.getIdAlumno(), idMat, nota2);
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "error");
+
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+    dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void cargarCombo() {
+        listaAlu = aluData.listarAlumnos();
+        for (Alumno alumno : listaAlu) {
+            jcbSelecAlumno.addItem(alumno);
+        }
+    }
+
+    private void armarCabeceraTabla(){
+        ArrayList<Object> filaCabecera= new ArrayList<>();
+        filaCabecera.add("Código");
+        filaCabecera.add("Nombre");
+        filaCabecera.add("Nota");
+
+        for (Object it : filaCabecera) {
+            modelo.addColumn(it);
+        }
+
+        TablaNotas.setModel(modelo);
+    }
+
+    private void borrarFilas() {
+        int filas = modelo.getRowCount()-1;
+        for (int i = filas; i  >=0; i--) {
+            modelo.removeRow(i);
+        }
+    }
+
+    private void cargarTabla(int id) {
+        borrarFilas();
+        Materia mat;
+        listaInsc = inscData.obtenerInscripcionesPorAlumno(id);
+            for(Inscripcion insc : listaInsc){
+            mat = insc.getMateria();
+            modelo.addRow(new Object[]{mat.getIdMateria(),mat.getNombre(),insc.getNota()});
+            }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaNotas;
     private javax.swing.JLabel jLabel1;
@@ -113,6 +207,6 @@ public class CargarNotas extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcbSelecAlumno;
+    private javax.swing.JComboBox<Alumno> jcbSelecAlumno;
     // End of variables declaration//GEN-END:variables
 }
